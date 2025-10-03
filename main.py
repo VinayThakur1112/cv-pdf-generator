@@ -4,6 +4,16 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib import colors
 from reportlab.platypus import FrameBreak
 
+NAME = "Vinay Thakur"
+POSOTION = "Senior Technical Lead"
+MOBILE_NO = "979"
+EMAIL_ID = "vi@gmail.com"
+LINKEDIN_ID = "linkedin.com/in/"
+GITHUB_ID = "linkedin.com/in/"
+SKILLS = ["SQL", "Python"]
+PROFILE_SUMMARY = ""
+EMPLOYMENT_HISTORY = ""
+
 # Custom background color (very light green)
 LIGHT_GREEN = colors.HexColor("#F0FFF0")  # Honeydew
 
@@ -68,14 +78,15 @@ def create_cv(output_file):
 
     # --- Left Column (Personal Info, Skills, Education) ---
     story = []
-    story.append(Paragraph("Vinay Thakur", title_style))
-    story.append(Paragraph("Senior Technical Lead", body_style))
+    story.append(Paragraph(NAME, title_style))
+    story.append(Paragraph(POSOTION, body_style))
     story.append(Spacer(1, 12))
     story.append(Paragraph("<b>Contact</b>", section_style))
-    story.append(Paragraph("9703949619<br/> vinay.t1112@gmail.com<br/>linkedin.com/in/callmevt", body_style))
+    story.append(Paragraph(MOBILE_NO+ "<br/>" +EMAIL_ID+ "<br/>" +LINKEDIN_ID, body_style))
     story.append(Spacer(1, 12))
     story.append(Paragraph("<b>Skills</b>", section_style))
-    story.append(Paragraph("Python<br/>SQL<br/>Docker<br/>Kubernetes<br/>Azure<br/>ETL<br/>CI/CD", skills_style))
+    for skill in SKILLS:
+        story.append(Paragraph(f"• {skill}", body_style))
     
 
     # 🚨 This tells ReportLab to stop filling left frame and move to right frame
